@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="87.02" tests="7" skipped="0" failures="0" errors="0">
+<testcase classname="Jupiter Toys Application Tests" name="Contact form shows validation errors on empty submit and clears them after filling fields" time="22.072">
+<system-out><![CDATA[
+Given I am on the home page.................................................passed
+When I navigate to the contact page.........................................passed
+And I click the submit button...............................................passed
+Then I should see forename validation error "Forename is required"..........passed
+And I should see email validation error "Email is required".................passed
+And I should see message validation error "Message is required".............passed
+When I fill in forename "Srikanth"..........................................passed
+And I fill in email "srikanth@test.com".....................................passed
+And I fill in message "This is an automated test message"...................passed
+Then the forename validation error should not be visible....................passed
+And the email validation error should not be visible........................passed
+And the message validation error should not be visible......................passed
+]]></system-out>
+</testcase>
+<testcase classname="Jupiter Toys Application Tests" name="Successful contact form submission - #1.1" time="8.523">
+<system-out><![CDATA[
+Given I am on the home page.................................................passed
+When I navigate to the contact page.........................................passed
+And I fill in forename "run1"...............................................passed
+And I fill in email "testrun1@example.com"..................................passed
+And I fill in message "Automated test message for run1".....................passed
+And I click the submit button...............................................passed
+Then I should see a success confirmation message containing "Thanks"........passed
+]]></system-out>
+</testcase>
+<testcase classname="Jupiter Toys Application Tests" name="Successful contact form submission - #1.2" time="6.977">
+<system-out><![CDATA[
+Given I am on the home page.................................................passed
+When I navigate to the contact page.........................................passed
+And I fill in forename "run2"...............................................passed
+And I fill in email "testrun2@example.com"..................................passed
+And I fill in message "Automated test message for run2".....................passed
+And I click the submit button...............................................passed
+Then I should see a success confirmation message containing "Thanks"........passed
+]]></system-out>
+</testcase>
+<testcase classname="Jupiter Toys Application Tests" name="Successful contact form submission - #1.3" time="6.321">
+<system-out><![CDATA[
+Given I am on the home page.................................................passed
+When I navigate to the contact page.........................................passed
+And I fill in forename "run3"...............................................passed
+And I fill in email "testrun3@example.com"..................................passed
+And I fill in message "Automated test message for run3".....................passed
+And I click the submit button...............................................passed
+Then I should see a success confirmation message containing "Thanks"........passed
+]]></system-out>
+</testcase>
+<testcase classname="Jupiter Toys Application Tests" name="Successful contact form submission - #1.4" time="19.503">
+<system-out><![CDATA[
+Given I am on the home page.................................................passed
+When I navigate to the contact page.........................................passed
+And I fill in forename "run4"...............................................passed
+And I fill in email "testrun4@example.com"..................................passed
+And I fill in message "Automated test message for run4".....................passed
+And I click the submit button...............................................passed
+Then I should see a success confirmation message containing "Thanks"........passed
+]]></system-out>
+</testcase>
+<testcase classname="Jupiter Toys Application Tests" name="Successful contact form submission - #1.5" time="7.251">
+<system-out><![CDATA[
+Given I am on the home page.................................................passed
+When I navigate to the contact page.........................................passed
+And I fill in forename "run5"...............................................passed
+And I fill in email "testrun5@example.com"..................................passed
+And I fill in message "Automated test message for run5".....................passed
+And I click the submit button...............................................passed
+Then I should see a success confirmation message containing "Thanks"........passed
+]]></system-out>
+</testcase>
+<testcase classname="Jupiter Toys Application Tests" name="Cart subtotals and grand total are calculated correctly" time="16.192">
+<system-out><![CDATA[
+Given I am on the home page.................................................passed
+When I navigate to the shop page............................................passed
+And I add 2 of "Stuffed Frog" to the cart...................................passed
+And I add 5 of "Fluffy Bunny" to the cart...................................passed
+And I add 3 of "Valentine Bear" to the cart.................................passed
+And I navigate to the cart page.............................................passed
+Then the subtotal for "Stuffed Frog" should equal unit price multiplied by 2.passed
+And the subtotal for "Fluffy Bunny" should equal unit price multiplied by 5.passed
+And the subtotal for "Valentine Bear" should equal unit price multiplied by 3.passed
+And the grand total should equal the sum of all subtotals...................passed
+]]></system-out>
+</testcase>
+</testsuite>

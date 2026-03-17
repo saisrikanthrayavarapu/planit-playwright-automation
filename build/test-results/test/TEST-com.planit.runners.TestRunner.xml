@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.planit.runners.TestRunner" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-03-17T13:03:27.805Z" hostname="SRIKANTH" time="86.946">
+  <properties/>
+  <testcase name="runScenario[0](&quot;Contact form shows validation errors on empty submit and clears them after filling fields&quot;, &quot;Jupiter Toys Application Tests&quot;)" classname="com.planit.runners.TestRunner" time="22.15"/>
+  <testcase name="runScenario[1](&quot;Successful contact form submission&quot;, &quot;Jupiter Toys Application Tests&quot;)" classname="com.planit.runners.TestRunner" time="8.528"/>
+  <testcase name="runScenario[2](&quot;Successful contact form submission&quot;, &quot;Jupiter Toys Application Tests&quot;)" classname="com.planit.runners.TestRunner" time="6.983"/>
+  <testcase name="runScenario[3](&quot;Successful contact form submission&quot;, &quot;Jupiter Toys Application Tests&quot;)" classname="com.planit.runners.TestRunner" time="6.325"/>
+  <testcase name="runScenario[4](&quot;Successful contact form submission&quot;, &quot;Jupiter Toys Application Tests&quot;)" classname="com.planit.runners.TestRunner" time="19.505"/>
+  <testcase name="runScenario[5](&quot;Successful contact form submission&quot;, &quot;Jupiter Toys Application Tests&quot;)" classname="com.planit.runners.TestRunner" time="7.256"/>
+  <testcase name="runScenario[6](&quot;Cart subtotals and grand total are calculated correctly&quot;, &quot;Jupiter Toys Application Tests&quot;)" classname="com.planit.runners.TestRunner" time="16.195"/>
+  <system-out><![CDATA[
+@TC1
+Scenario: Contact form shows validation errors on empty submit and clears them after filling fields # features/jupiter_toys.feature:4
+  Given I am on the home page                                                                       # com.planit.stepdefs.ContactSteps.iAmOnTheHomePage()
+  When I navigate to the contact page                                                               # com.planit.stepdefs.ContactSteps.iNavigateToTheContactPage()
+  And I click the submit button                                                                     # com.planit.stepdefs.ContactSteps.iClickTheSubmitButton()
+  Then I should see forename validation error "Forename is required"                                # com.planit.stepdefs.ContactSteps.iShouldSeeForenameValidationError(java.lang.String)
+  And I should see email validation error "Email is required"                                       # com.planit.stepdefs.ContactSteps.iShouldSeeEmailValidationError(java.lang.String)
+  And I should see message validation error "Message is required"                                   # com.planit.stepdefs.ContactSteps.iShouldSeeMessageValidationError(java.lang.String)
+  When I fill in forename "Srikanth"                                                                # com.planit.stepdefs.ContactSteps.iFillInForename(java.lang.String)
+  And I fill in email "srikanth@test.com"                                                           # com.planit.stepdefs.ContactSteps.iFillInEmail(java.lang.String)
+  And I fill in message "This is an automated test message"                                         # com.planit.stepdefs.ContactSteps.iFillInMessage(java.lang.String)
+  Then the forename validation error should not be visible                                          # com.planit.stepdefs.ContactSteps.theForenameValidationErrorShouldNotBeVisible()
+  And the email validation error should not be visible                                              # com.planit.stepdefs.ContactSteps.theEmailValidationErrorShouldNotBeVisible()
+  And the message validation error should not be visible                                            # com.planit.stepdefs.ContactSteps.theMessageValidationErrorShouldNotBeVisible()
+
+@TC2
+Scenario Outline: Successful contact form submission                   # features/jupiter_toys.feature:30
+  Given I am on the home page                                          # com.planit.stepdefs.ContactSteps.iAmOnTheHomePage()
+  When I navigate to the contact page                                  # com.planit.stepdefs.ContactSteps.iNavigateToTheContactPage()
+  And I fill in forename "run1"                                        # com.planit.stepdefs.ContactSteps.iFillInForename(java.lang.String)
+  And I fill in email "testrun1@example.com"                           # com.planit.stepdefs.ContactSteps.iFillInEmail(java.lang.String)
+  And I fill in message "Automated test message for run1"              # com.planit.stepdefs.ContactSteps.iFillInMessage(java.lang.String)
+  And I click the submit button                                        # com.planit.stepdefs.ContactSteps.iClickTheSubmitButton()
+  Then I should see a success confirmation message containing "Thanks" # com.planit.stepdefs.ContactSteps.iShouldSeeASuccessConfirmationMessageContaining(java.lang.String)
+
+@TC2
+Scenario Outline: Successful contact form submission                   # features/jupiter_toys.feature:31
+  Given I am on the home page                                          # com.planit.stepdefs.ContactSteps.iAmOnTheHomePage()
+  When I navigate to the contact page                                  # com.planit.stepdefs.ContactSteps.iNavigateToTheContactPage()
+  And I fill in forename "run2"                                        # com.planit.stepdefs.ContactSteps.iFillInForename(java.lang.String)
+  And I fill in email "testrun2@example.com"                           # com.planit.stepdefs.ContactSteps.iFillInEmail(java.lang.String)
+  And I fill in message "Automated test message for run2"              # com.planit.stepdefs.ContactSteps.iFillInMessage(java.lang.String)
+  And I click the submit button                                        # com.planit.stepdefs.ContactSteps.iClickTheSubmitButton()
+  Then I should see a success confirmation message containing "Thanks" # com.planit.stepdefs.ContactSteps.iShouldSeeASuccessConfirmationMessageContaining(java.lang.String)
+
+@TC2
+Scenario Outline: Successful contact form submission                   # features/jupiter_toys.feature:32
+  Given I am on the home page                                          # com.planit.stepdefs.ContactSteps.iAmOnTheHomePage()
+  When I navigate to the contact page                                  # com.planit.stepdefs.ContactSteps.iNavigateToTheContactPage()
+  And I fill in forename "run3"                                        # com.planit.stepdefs.ContactSteps.iFillInForename(java.lang.String)
+  And I fill in email "testrun3@example.com"                           # com.planit.stepdefs.ContactSteps.iFillInEmail(java.lang.String)
+  And I fill in message "Automated test message for run3"              # com.planit.stepdefs.ContactSteps.iFillInMessage(java.lang.String)
+  And I click the submit button                                        # com.planit.stepdefs.ContactSteps.iClickTheSubmitButton()
+  Then I should see a success confirmation message containing "Thanks" # com.planit.stepdefs.ContactSteps.iShouldSeeASuccessConfirmationMessageContaining(java.lang.String)
+
+@TC2
+Scenario Outline: Successful contact form submission                   # features/jupiter_toys.feature:33
+  Given I am on the home page                                          # com.planit.stepdefs.ContactSteps.iAmOnTheHomePage()
+  When I navigate to the contact page                                  # com.planit.stepdefs.ContactSteps.iNavigateToTheContactPage()
+  And I fill in forename "run4"                                        # com.planit.stepdefs.ContactSteps.iFillInForename(java.lang.String)
+  And I fill in email "testrun4@example.com"                           # com.planit.stepdefs.ContactSteps.iFillInEmail(java.lang.String)
+  And I fill in message "Automated test message for run4"              # com.planit.stepdefs.ContactSteps.iFillInMessage(java.lang.String)
+  And I click the submit button                                        # com.planit.stepdefs.ContactSteps.iClickTheSubmitButton()
+  Then I should see a success confirmation message containing "Thanks" # com.planit.stepdefs.ContactSteps.iShouldSeeASuccessConfirmationMessageContaining(java.lang.String)
+
+@TC2
+Scenario Outline: Successful contact form submission                   # features/jupiter_toys.feature:34
+  Given I am on the home page                                          # com.planit.stepdefs.ContactSteps.iAmOnTheHomePage()
+  When I navigate to the contact page                                  # com.planit.stepdefs.ContactSteps.iNavigateToTheContactPage()
+  And I fill in forename "run5"                                        # com.planit.stepdefs.ContactSteps.iFillInForename(java.lang.String)
+  And I fill in email "testrun5@example.com"                           # com.planit.stepdefs.ContactSteps.iFillInEmail(java.lang.String)
+  And I fill in message "Automated test message for run5"              # com.planit.stepdefs.ContactSteps.iFillInMessage(java.lang.String)
+  And I click the submit button                                        # com.planit.stepdefs.ContactSteps.iClickTheSubmitButton()
+  Then I should see a success confirmation message containing "Thanks" # com.planit.stepdefs.ContactSteps.iShouldSeeASuccessConfirmationMessageContaining(java.lang.String)
+
+@TC3
+Scenario: Cart subtotals and grand total are calculated correctly               # features/jupiter_toys.feature:37
+  Given I am on the home page                                                   # com.planit.stepdefs.ContactSteps.iAmOnTheHomePage()
+  When I navigate to the shop page                                              # com.planit.stepdefs.CartSteps.iNavigateToTheShopPage()
+  And I add 2 of "Stuffed Frog" to the cart                                     # com.planit.stepdefs.CartSteps.iAddOfToTheCart(int,java.lang.String)
+  And I add 5 of "Fluffy Bunny" to the cart                                     # com.planit.stepdefs.CartSteps.iAddOfToTheCart(int,java.lang.String)
+  And I add 3 of "Valentine Bear" to the cart                                   # com.planit.stepdefs.CartSteps.iAddOfToTheCart(int,java.lang.String)
+  And I navigate to the cart page                                               # com.planit.stepdefs.CartSteps.iNavigateToTheCartPage()
+  Then the subtotal for "Stuffed Frog" should equal unit price multiplied by 2  # com.planit.stepdefs.CartSteps.theSubtotalForShouldEqualUnitPriceMultipliedBy(java.lang.String,int)
+  And the subtotal for "Fluffy Bunny" should equal unit price multiplied by 5   # com.planit.stepdefs.CartSteps.theSubtotalForShouldEqualUnitPriceMultipliedBy(java.lang.String,int)
+  And the subtotal for "Valentine Bear" should equal unit price multiplied by 3 # com.planit.stepdefs.CartSteps.theSubtotalForShouldEqualUnitPriceMultipliedBy(java.lang.String,int)
+  And the grand total should equal the sum of all subtotals                     # com.planit.stepdefs.CartSteps.theGrandTotalShouldEqualTheSumOfAllSubtotals()
+]]></system-out>
+  <system-err><![CDATA[Mar 18, 2026 2:03:29 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 145
+Mar 18, 2026 2:03:29 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 145.0.7632.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.21.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 18, 2026 2:03:50 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 145
+Mar 18, 2026 2:03:50 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 145.0.7632.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.21.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 18, 2026 2:03:59 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 145
+Mar 18, 2026 2:03:59 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 145.0.7632.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.21.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 18, 2026 2:04:06 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 145
+Mar 18, 2026 2:04:06 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 145.0.7632.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.21.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 18, 2026 2:04:12 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 145
+Mar 18, 2026 2:04:12 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 145.0.7632.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.21.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 18, 2026 2:04:32 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 145
+Mar 18, 2026 2:04:32 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 145.0.7632.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.21.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 18, 2026 2:04:39 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 145
+Mar 18, 2026 2:04:39 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 145.0.7632.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.21.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+]]></system-err>
+</testsuite>
