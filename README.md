@@ -111,8 +111,32 @@ After the build, reports are generated at:
 | Cucumber JSON | `build/reports/cucumber/cucumber-report.json` |
 | JUnit XML | `build/reports/cucumber/cucumber-report.xml` |
 | TestNG HTML | `build/reports/tests/test/index.html` |
+| Allure Results (raw) | `build/allure-results/` |
+| Allure HTML Report | `build/reports/allure-report/index.html` |
 
 Open the HTML report in a browser to see detailed test results with step-by-step output.
+
+### Allure Reports
+
+Allure provides enhanced test reporting with detailed analytics and visual test execution history.
+
+**Generate Allure report:**
+
+```bash
+./gradlew allureReport
+```
+
+This will generate the HTML report at `build/reports/allure-report/index.html`. Open it in a browser to view:
+- Test execution timeline
+- Test results with detailed logs
+- Screenshots and attachments
+- Test history and trends
+- Severity classifications
+
+**On Windows:**
+```cmd
+gradlew.bat allureReport
+```
 
 ---
 

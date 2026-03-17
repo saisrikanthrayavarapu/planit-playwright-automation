@@ -1,6 +1,7 @@
 plugins {
     java
     eclipse
+    id("io.qameta.allure") version "2.11.2"
 }
 
 group = "com.planit"
@@ -23,6 +24,10 @@ dependencies {
     testImplementation("org.seleniumhq.selenium:selenium-java:4.21.0")
     testImplementation("io.github.bonigarcia:webdrivermanager:5.8.0")
     testImplementation("org.assertj:assertj-core:3.25.3")
+    
+    // Allure reporting
+    testImplementation("io.qameta.allure:allure-cucumber7-jvm:2.26.0")
+    testImplementation("io.qameta.allure:allure-testng:2.26.0")
 }
 
 tasks.test {
@@ -52,6 +57,9 @@ tasks.test {
     System.getProperty("cucumber.options")?.let {
         systemProperty("cucumber.options", it)
     }
+
+    // Allure results directory
+    systemProperty("allure.results.directory", "${project.buildDir}/allure-results")
 
     testLogging {
         events("passed", "skipped", "failed")
