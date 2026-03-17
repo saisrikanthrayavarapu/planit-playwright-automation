@@ -11,7 +11,8 @@ import org.testng.annotations.DataProvider;
                 "pretty",
                 "html:build/reports/cucumber/cucumber-report.html",
                 "json:build/reports/cucumber/cucumber-report.json",
-                "junit:build/reports/cucumber/cucumber-report.xml"
+                "junit:build/reports/cucumber/cucumber-report.xml",
+                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
         },
         monochrome = true
 )

@@ -1,1 +1,8 @@
 /build/
+/.gradle/
+/.idea/
+/.settings/
+/.vscode/
+/gradle/
+/bin/
+/gradle/

@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>All Test Cases</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>7/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>6/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Mar 18 02:03:27 NZDT 2026</td>
+<td>Started on:</td><td>Wed Mar 18 10:35:14 NZDT 2026</td>
 </tr>
-<tr><td>Total time:</td><td>87 seconds (87388 ms)</td>
+<tr><td>Total time:</td><td>128 seconds (128609 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,6 +67,31 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.planit.runners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: com.planit.runners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Cart subtotals and grand total are calculated correctly", "Jupiter Toys Application Tests"</td>
+<td><div><pre>java.lang.AssertionError: [Subtotal for &apos;Fluffy Bunny&apos; should be 49.95 (unit price 9.99 × 5)] 
+expected: 49.95
+ but was: 39.96
+	at com.planit.stepdefs.CartSteps.theSubtotalForShouldEqualUnitPriceMultipliedBy(CartSteps.java:81)
+	at ?.the subtotal for &quot;Fluffy Bunny&quot; should equal unit price multiplied by 5(classpath:features/jupiter_toys.feature:45)
+</pre></div><a href='#' onClick='toggleBox("stack-trace565678786", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace565678786'><pre>java.lang.AssertionError: [Subtotal for &apos;Fluffy Bunny&apos; should be 49.95 (unit price 9.99 × 5)] 
+expected: 49.95
+ but was: 39.96
+	at com.planit.stepdefs.CartSteps.theSubtotalForShouldEqualUnitPriceMultipliedBy(CartSteps.java:81)
+	at ?.the subtotal for &quot;Fluffy Bunny&quot; should equal unit price multiplied by 5(classpath:features/jupiter_toys.feature:45)
+</pre></div></td>
+<td>6</td>
+<td>com.planit.runners.TestRunner@7bc6d27a</td></tr>
+</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -76,40 +101,35 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.planit.runners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: com.planit.runners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Cart subtotals and grand total are calculated correctly", "Jupiter Toys Application Tests"</td>
+<td title='com.planit.runners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: com.planit.runners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Successful contact form submission", "Jupiter Toys Application Tests"</td>
 <td></td>
-<td>16</td>
-<td>com.planit.runners.TestRunner@57ad2aa7</td></tr>
+<td>20</td>
+<td>com.planit.runners.TestRunner@7bc6d27a</td></tr>
 <tr>
 <td title='com.planit.runners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: com.planit.runners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Successful contact form submission", "Jupiter Toys Application Tests"</td>
 <td></td>
-<td>8</td>
-<td>com.planit.runners.TestRunner@57ad2aa7</td></tr>
+<td>18</td>
+<td>com.planit.runners.TestRunner@7bc6d27a</td></tr>
 <tr>
 <td title='com.planit.runners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: com.planit.runners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Successful contact form submission", "Jupiter Toys Application Tests"</td>
 <td></td>
-<td>19</td>
-<td>com.planit.runners.TestRunner@57ad2aa7</td></tr>
-<tr>
-<td title='com.planit.runners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: com.planit.runners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Successful contact form submission", "Jupiter Toys Application Tests"</td>
-<td></td>
-<td>7</td>
-<td>com.planit.runners.TestRunner@57ad2aa7</td></tr>
-<tr>
-<td title='com.planit.runners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: com.planit.runners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Successful contact form submission", "Jupiter Toys Application Tests"</td>
-<td></td>
-<td>6</td>
-<td>com.planit.runners.TestRunner@57ad2aa7</td></tr>
-<tr>
-<td title='com.planit.runners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: com.planit.runners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Successful contact form submission", "Jupiter Toys Application Tests"</td>
-<td></td>
-<td>6</td>
-<td>com.planit.runners.TestRunner@57ad2aa7</td></tr>
+<td>21</td>
+<td>com.planit.runners.TestRunner@7bc6d27a</td></tr>
 <tr>
 <td title='com.planit.runners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: com.planit.runners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Contact form shows validation errors on empty submit and clears them after filling fields", "Jupiter Toys Application Tests"</td>
 <td></td>
-<td>22</td>
-<td>com.planit.runners.TestRunner@57ad2aa7</td></tr>
+<td>23</td>
+<td>com.planit.runners.TestRunner@7bc6d27a</td></tr>
+<tr>
+<td title='com.planit.runners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: com.planit.runners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Successful contact form submission", "Jupiter Toys Application Tests"</td>
+<td></td>
+<td>17</td>
+<td>com.planit.runners.TestRunner@7bc6d27a</td></tr>
+<tr>
+<td title='com.planit.runners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: com.planit.runners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Successful contact form submission", "Jupiter Toys Application Tests"</td>
+<td></td>
+<td>20</td>
+<td>com.planit.runners.TestRunner@7bc6d27a</td></tr>
 </table><p>
 </body>
 </html>

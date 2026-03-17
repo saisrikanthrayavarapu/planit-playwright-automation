@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.planit.runners.TestRunner" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-03-17T13:03:27.805Z" hostname="SRIKANTH" time="86.946">
+<testsuite name="com.planit.runners.TestRunner" tests="7" skipped="0" failures="1" errors="0" timestamp="2026-03-17T21:35:15.228Z" hostname="SRIKANTH" time="127.749">
   <properties/>
-  <testcase name="runScenario[0](&quot;Contact form shows validation errors on empty submit and clears them after filling fields&quot;, &quot;Jupiter Toys Application Tests&quot;)" classname="com.planit.runners.TestRunner" time="22.15"/>
-  <testcase name="runScenario[1](&quot;Successful contact form submission&quot;, &quot;Jupiter Toys Application Tests&quot;)" classname="com.planit.runners.TestRunner" time="8.528"/>
-  <testcase name="runScenario[2](&quot;Successful contact form submission&quot;, &quot;Jupiter Toys Application Tests&quot;)" classname="com.planit.runners.TestRunner" time="6.983"/>
-  <testcase name="runScenario[3](&quot;Successful contact form submission&quot;, &quot;Jupiter Toys Application Tests&quot;)" classname="com.planit.runners.TestRunner" time="6.325"/>
-  <testcase name="runScenario[4](&quot;Successful contact form submission&quot;, &quot;Jupiter Toys Application Tests&quot;)" classname="com.planit.runners.TestRunner" time="19.505"/>
-  <testcase name="runScenario[5](&quot;Successful contact form submission&quot;, &quot;Jupiter Toys Application Tests&quot;)" classname="com.planit.runners.TestRunner" time="7.256"/>
-  <testcase name="runScenario[6](&quot;Cart subtotals and grand total are calculated correctly&quot;, &quot;Jupiter Toys Application Tests&quot;)" classname="com.planit.runners.TestRunner" time="16.195"/>
+  <testcase name="runScenario[0](&quot;Contact form shows validation errors on empty submit and clears them after filling fields&quot;, &quot;Jupiter Toys Application Tests&quot;)" classname="com.planit.runners.TestRunner" time="23.731"/>
+  <testcase name="runScenario[1](&quot;Successful contact form submission&quot;, &quot;Jupiter Toys Application Tests&quot;)" classname="com.planit.runners.TestRunner" time="20.017"/>
+  <testcase name="runScenario[2](&quot;Successful contact form submission&quot;, &quot;Jupiter Toys Application Tests&quot;)" classname="com.planit.runners.TestRunner" time="18.347"/>
+  <testcase name="runScenario[3](&quot;Successful contact form submission&quot;, &quot;Jupiter Toys Application Tests&quot;)" classname="com.planit.runners.TestRunner" time="20.29"/>
+  <testcase name="runScenario[4](&quot;Successful contact form submission&quot;, &quot;Jupiter Toys Application Tests&quot;)" classname="com.planit.runners.TestRunner" time="17.351"/>
+  <testcase name="runScenario[5](&quot;Successful contact form submission&quot;, &quot;Jupiter Toys Application Tests&quot;)" classname="com.planit.runners.TestRunner" time="21.014"/>
+  <testcase name="runScenario[6](&quot;Cart subtotals and grand total are calculated correctly&quot;, &quot;Jupiter Toys Application Tests&quot;)" classname="com.planit.runners.TestRunner" time="6.995">
+    <failure message="java.lang.AssertionError: [Subtotal for 'Fluffy Bunny' should be 49.95 (unit price 9.99 Ã— 5)] &#13;&#10;expected: 49.95&#13;&#10; but was: 39.96" type="java.lang.AssertionError">java.lang.AssertionError: [Subtotal for 'Fluffy Bunny' should be 49.95 (unit price 9.99 Ã— 5)] 
+expected: 49.95
+ but was: 39.96
+	at com.planit.stepdefs.CartSteps.theSubtotalForShouldEqualUnitPriceMultipliedBy(CartSteps.java:81)
+	at ✽.the subtotal for &quot;Fluffy Bunny&quot; should equal unit price multiplied by 5(classpath:features/jupiter_toys.feature:45)
+</failure>
+  </testcase>
   <system-out><![CDATA[
 @TC1
 Scenario: Contact form shows validation errors on empty submit and clears them after filling fields # features/jupiter_toys.feature:4
@@ -84,36 +91,42 @@ Scenario: Cart subtotals and grand total are calculated correctly               
   And I navigate to the cart page                                               # com.planit.stepdefs.CartSteps.iNavigateToTheCartPage()
   Then the subtotal for "Stuffed Frog" should equal unit price multiplied by 2  # com.planit.stepdefs.CartSteps.theSubtotalForShouldEqualUnitPriceMultipliedBy(java.lang.String,int)
   And the subtotal for "Fluffy Bunny" should equal unit price multiplied by 5   # com.planit.stepdefs.CartSteps.theSubtotalForShouldEqualUnitPriceMultipliedBy(java.lang.String,int)
+      java.lang.AssertionError: [Subtotal for 'Fluffy Bunny' should be 49.95 (unit price 9.99 Ãƒâ€” 5)] 
+expected: 49.95
+ but was: 39.96
+	at com.planit.stepdefs.CartSteps.theSubtotalForShouldEqualUnitPriceMultipliedBy(CartSteps.java:81)
+	at âœ½.the subtotal for "Fluffy Bunny" should equal unit price multiplied by 5(classpath:features/jupiter_toys.feature:45)
+
   And the subtotal for "Valentine Bear" should equal unit price multiplied by 3 # com.planit.stepdefs.CartSteps.theSubtotalForShouldEqualUnitPriceMultipliedBy(java.lang.String,int)
   And the grand total should equal the sum of all subtotals                     # com.planit.stepdefs.CartSteps.theGrandTotalShouldEqualTheSumOfAllSubtotals()
 ]]></system-out>
-  <system-err><![CDATA[Mar 18, 2026 2:03:29 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
-WARNING: Unable to find CDP implementation matching 145
-Mar 18, 2026 2:03:29 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
-WARNING: Unable to find version of CDP to use for 145.0.7632.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.21.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-Mar 18, 2026 2:03:50 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
-WARNING: Unable to find CDP implementation matching 145
-Mar 18, 2026 2:03:50 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
-WARNING: Unable to find version of CDP to use for 145.0.7632.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.21.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-Mar 18, 2026 2:03:59 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
-WARNING: Unable to find CDP implementation matching 145
-Mar 18, 2026 2:03:59 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
-WARNING: Unable to find version of CDP to use for 145.0.7632.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.21.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-Mar 18, 2026 2:04:06 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
-WARNING: Unable to find CDP implementation matching 145
-Mar 18, 2026 2:04:06 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
-WARNING: Unable to find version of CDP to use for 145.0.7632.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.21.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-Mar 18, 2026 2:04:12 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
-WARNING: Unable to find CDP implementation matching 145
-Mar 18, 2026 2:04:12 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
-WARNING: Unable to find version of CDP to use for 145.0.7632.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.21.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-Mar 18, 2026 2:04:32 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
-WARNING: Unable to find CDP implementation matching 145
-Mar 18, 2026 2:04:32 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
-WARNING: Unable to find version of CDP to use for 145.0.7632.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.21.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-Mar 18, 2026 2:04:39 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
-WARNING: Unable to find CDP implementation matching 145
-Mar 18, 2026 2:04:39 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
-WARNING: Unable to find version of CDP to use for 145.0.7632.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.21.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+  <system-err><![CDATA[Mar 18, 2026 10:35:17 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 18, 2026 10:35:17 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.21.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 18, 2026 10:35:39 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 18, 2026 10:35:39 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.21.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 18, 2026 10:35:59 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 18, 2026 10:35:59 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.21.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 18, 2026 10:36:18 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 18, 2026 10:36:18 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.21.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 18, 2026 10:36:38 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 18, 2026 10:36:38 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.21.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 18, 2026 10:36:55 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 18, 2026 10:36:55 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.21.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 18, 2026 10:37:16 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 18, 2026 10:37:16 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.21.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
 ]]></system-err>
 </testsuite>
