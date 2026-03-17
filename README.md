@@ -169,3 +169,12 @@ Increase explicit waits in `BasePage.waitForVisible()` / `BasePage.waitForHidden
 Use the Gradle Wrapper script included in the project:
 - macOS/Linux: `./gradlew`
 - Windows: `gradlew.bat`
+
+---
+
+## Contact
+
+| Detail | Information |
+|--------|-------------|
+| Email | saisrikanth.rayavarapu@gmail.com |
+| Mobile | +64 224769889 |
