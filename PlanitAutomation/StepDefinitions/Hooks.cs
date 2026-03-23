@@ -17,7 +17,7 @@ public sealed class Hooks(ScenarioContext scenarioContext)
         TestLogger.Info($"▶ Starting scenario: '{scenarioContext.ScenarioInfo.Title}'");
 
         // Run headless in CI environments (e.g., GitHub Actions) to avoid XServer issues
-        bool isCi = Environment.GetEnvironmentVariable("CI") != null;
+        bool isCi = Environment.GetEnvironmentVariable("GHAC") != null;
         var browserManager = new BrowserManager();
         await browserManager.InitAsync(headless: isCi);
         scenarioContext.Set(browserManager);
