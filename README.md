@@ -1,14 +1,13 @@
-# Planit Jupiter Toys — Java Selenium Cucumber TestNG Automation
+# Planit Jupiter Toys — C# Playwright Reqnroll NUnit Automation
 
 End-to-end test automation suite for the [Jupiter Toys](http://jupiter.cloud.planittesting.com) web application, built with:
 
-- **Java 17**
-- **Selenium WebDriver 4.21**
-- **Cucumber 7.18 (BDD)**
-- **TestNG 7.10**
-- **WebDriverManager 5.8** (automatic ChromeDriver management)
-- **AssertJ 3.25** (fluent assertions)
-- **Gradle 8+**
+- **C#**
+- **.NET 8.0**
+- **Playwright** (browser automation)
+- **Reqnroll** (BDD framework, formerly SpecFlow)
+- **NUnit** (testing framework)
+- **FluentAssertions** (readable assertions)
 
 ---
 
@@ -16,42 +15,38 @@ End-to-end test automation suite for the [Jupiter Toys](http://jupiter.cloud.pla
 
 | Tool | Version |
 |------|---------|
-| Java JDK | 17+ |
-| Gradle | 8+ (or use the Gradle Wrapper `./gradlew`) |
+| .NET SDK | 8.0+ |
 | Google Chrome | Latest stable |
-| ChromeDriver | Managed automatically by WebDriverManager |
+| Microsoft Edge | Latest stable (optional) |
 
 ---
 
 ## Project Structure
 
 ```
-planit-java-automation/
-├── src/
-│   ├── main/java/com/planit/          # (reserved for production code)
-│   └── test/
-│       ├── java/com/planit/
-│       │   ├── pages/                 # Page Object Model classes
-│       │   │   ├── BasePage.java      # Base page with shared Selenium helpers
-│       │   │   ├── HomePage.java      # Home page — navigation links
-│       │   │   ├── ContactPage.java   # Contact page — form fields & validation
-│       │   │   ├── ShopPage.java      # Shop page — add products to cart
-│       │   │   └── CartPage.java      # Cart page — verify prices & totals
-│       │   ├── stepdefs/              # Cucumber step definitions
-│       │   │   ├── Hooks.java         # @Before / @After (driver init & quit)
-│       │   │   ├── ContactSteps.java  # Steps for TC1 & TC2
-│       │   │   └── CartSteps.java     # Steps for TC3
-│       │   ├── runners/
-│       │   │   └── TestRunner.java    # TestNG + Cucumber runner
-│       │   └── utils/
-│       │       ├── DriverManager.java # ThreadLocal WebDriver management
-│       │       └── PriceUtils.java    # Price rounding utility
-│       └── resources/
-│           └── features/
-│               └── jupiter_toys.feature  # All BDD scenarios
-├── build.gradle                       # Gradle build configuration
-├── settings.gradle
-├── testng.xml                         # TestNG suite definition
+planit-C#-automation/
+├── PlanitAutomation/
+│   ├── PlanitAutomation.csproj        # .NET project file
+│   ├── reqnroll.json                  # Reqnroll configuration
+│   ├── Features/
+│   │   ├── JupiterToys.feature        # BDD feature file
+│   │   └── JupiterToys.feature.cs     # Generated step definitions
+│   ├── Pages/
+│   │   ├── BasePage.cs                # Base page with shared helpers
+│   │   ├── HomePage.cs                # Home page — navigation links
+│   │   ├── ContactPage.cs             # Contact page — form fields & validation
+│   │   ├── ShopPage.cs                # Shop page — add products to cart
+│   │   └── CartPage.cs                # Cart page — verify prices & totals
+│   ├── StepDefinitions/
+│   │   ├── Hooks.cs                   # @Before / @After (driver init & quit)
+│   │   ├── ContactSteps.cs            # Steps for TC1 & TC2
+│   │   └── CartSteps.cs               # Steps for TC3
+│   ├── Utils/
+│   │   ├── BrowserManager.cs          # Browser management
+│   │   └── PriceUtils.cs              # Price rounding utility
+│   └── bin/Debug/net8.0/              # Build output
+├── NuGet.Config                       # NuGet package sources
+├── planit-C#-automation.sln           # Solution file
 ├── Jenkinsfile                        # CI/CD pipeline definition
 └── README.md
 ```
@@ -70,133 +65,66 @@ planit-java-automation/
 
 ## How to Run
 
+### Prerequisites Setup
+
+1. Install .NET 8.0 SDK
+2. Install Playwright browsers:
+   ```bash
+   dotnet tool install --global Microsoft.Playwright.CLI
+   playwright install
+   ```
+
 ### Run all tests
 
 ```bash
-./gradlew clean test build
+dotnet test
 ```
 
 ### Run a specific tag
 
 ```bash
 # Run TC1 only
-./gradlew clean test build -Dcucumber.filter.tags="@TC1"
+dotnet test --filter "Category=TC1"
 
 # Run TC2 only
-./gradlew clean test build -Dcucumber.filter.tags="@TC2"
+dotnet test --filter "Category=TC2"
 
 # Run TC3 only
-./gradlew clean test build -Dcucumber.filter.tags="@TC3"
-
-# Run TC1 and TC2
-./gradlew clean test build -Dcucumber.filter.tags="@TC1 or @TC2"
+dotnet test --filter "Category=TC3"
 ```
 
-### On Windows (cmd/PowerShell)
-
-```cmd
-gradlew.bat clean test build
-gradlew.bat clean test build -Dcucumber.filter.tags="@TC1"
-```
-
----
-
-## Reports
-
-After the build, reports are generated at:
-
-| Report | Location |
-|--------|----------|
-| Cucumber HTML | `build/reports/cucumber/cucumber-report.html` |
-| Cucumber JSON | `build/reports/cucumber/cucumber-report.json` |
-| JUnit XML | `build/reports/cucumber/cucumber-report.xml` |
-| TestNG HTML | `build/reports/tests/test/index.html` |
-| Allure Results (raw) | `build/allure-results/` |
-| Allure HTML Report | `build/reports/allure-report/index.html` |
-
-Open the HTML report in a browser to see detailed test results with step-by-step output.
-
-### Allure Reports
-
-Allure provides enhanced test reporting with detailed analytics and visual test execution history.
-
-**Generate Allure report:**
+### Build the project
 
 ```bash
-./gradlew allureReport
-```
-
-This will generate the HTML report at `build/reports/allure-report/index.html`. Open it in a browser to view:
-- Test execution timeline
-- Test results with detailed logs
-- Screenshots and attachments
-- Test history and trends
-- Severity classifications
-
-**On Windows:**
-```cmd
-gradlew.bat allureReport
+dotnet build
 ```
 
 ---
 
-## CI/CD — Jenkins
+## Reporting
 
-The `Jenkinsfile` defines a declarative pipeline:
+Test execution generates the following outputs:
 
-1. **Checkout** — checks out the source code from SCM
-2. **Build and Test** — runs `./gradlew clean test build`
-3. **Post-build (always)**:
-   - Publishes JUnit XML results
-   - Publishes Cucumber HTML report (requires [HTML Publisher Plugin](https://plugins.jenkins.io/htmlpublisher/))
-   - Archives all artifacts under `build/reports/`
+- **Test Results**: NUnit TRX files in `TestResults/` directory
+- **Screenshots**: On test failure, full-page screenshots are captured and saved to `TestResults/Screenshots/`
+- **Logs**: Detailed execution logs are written to console and saved to `TestResults/Logs/` with timestamps
 
-### Jenkins Setup
+To view test results after running tests:
 
-1. Create a new Pipeline job in Jenkins
-2. Point it to your SCM repository
-3. Ensure the `JDK17` tool is configured in **Manage Jenkins → Tools**
-4. Install the **HTML Publisher Plugin** for the HTML report step
-
----
-
-## Configuration
-
-### Implicit Wait
-5 seconds (configured in `DriverManager.initDriver()`)
-
-### Explicit Wait
-- Visibility: 15 seconds
-- Invisibility: 10 seconds
-
-Both are defined in `BasePage`.
-
-### ChromeDriver Options
-- `--no-sandbox` — required in Docker/Jenkins environments
-- `--disable-dev-shm-usage` — prevents memory issues in CI
-- `--start-maximized` — maximises browser window
-
----
-
-## Troubleshooting
-
-**ChromeDriver version mismatch**  
-WebDriverManager automatically downloads the matching ChromeDriver. If it fails, try:
-```java
-WebDriverManager.chromedriver().browserVersion("stable").setup();
+```bash
+# View test results in browser (if using Visual Studio Test Explorer)
+# Or check the TRX files in TestResults/
 ```
 
-**Tests timing out**  
-Increase explicit waits in `BasePage.waitForVisible()` / `BasePage.waitForHidden()`.
-
-**Gradle not found**  
-Use the Gradle Wrapper script included in the project:
-- macOS/Linux: `./gradlew`
-- Windows: `gradlew.bat`
-
 ---
 
-## Contact
+## CI/CD
+
+The `Jenkinsfile` defines a pipeline that:
+
+1. Checks out the source code
+2. Runs `dotnet test` with TRX logging
+3. Publishes test results and archives artifacts
 
 | Detail | Information |
 |--------|-------------|

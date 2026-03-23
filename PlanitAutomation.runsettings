@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Run settings for dotnet test.
+  Usage:  dotnet test ‑‑settings PlanitAutomation.runsettings
+  Results are written to:
+    TestResults/          → TRX (Visual Studio / Azure DevOps compatible)
+    TestResults/NUnit/    → NUnit XML (Jenkins / Allure compatible)
+    TestResults/Logs/     → plain-text error log  (via TestLogger)
+    TestResults/Screenshots/ → failure screenshots (via Hooks.cs)
+-->
+<RunSettings>
+
+  <!-- ── General test execution ─────────────────────────────────────── -->
+  <RunConfiguration>
+    <ResultsDirectory>TestResults</ResultsDirectory>
+    <!-- Run tests in parallel at the assembly level (change to All for full parallelism) -->
+    <MaxCpuCount>1</MaxCpuCount>
+  </RunConfiguration>
+
+  <!-- ── Loggers ────────────────────────────────────────────────────── -->
+  <LoggerRunSettings>
+    <Loggers>
+
+      <!-- TRX – picked up by Visual Studio Test Explorer & Azure DevOps -->
+      <Logger friendlyName="trx" enabled="True">
+        <Configuration>
+          <LogFileName>TestResults.trx</LogFileName>
+        </Configuration>
+      </Logger>
+
+      <!-- NUnit XML v3 – consumed by Jenkins NUnit plugin & Allure -->
+      <Logger friendlyName="nunit" enabled="True">
+        <Configuration>
+          <LogFileName>TestResults/NUnit/TestResults.xml</LogFileName>
+        </Configuration>
+      </Logger>
+
+    </Loggers>
+  </LoggerRunSettings>
+
+  <!-- ── NUnit adapter settings ─────────────────────────────────────── -->
+  <NUnit>
+    <!-- Write the NUnit 3 XML result file -->
+    <ResultsDirectory>TestResults/NUnit</ResultsDirectory>
+    <OutputXmlFolderMode>RelativeToResultDirectory</OutputXmlFolderMode>
+    <!-- Show each test output in the console -->
+    <ShowInternalProperties>true</ShowInternalProperties>
+  </NUnit>
+
+</RunSettings>

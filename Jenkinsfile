@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        jdk 'JDK17'
+        dotnet 'dotnet-8.0'
     }
 
     stages {
@@ -14,25 +14,19 @@ pipeline {
 
         stage('Build and Test') {
             steps {
-                sh './gradlew clean test build'
+                sh 'dotnet test --logger "trx;LogFileName=test-results.trx"'
             }
         }
     }
 
     post {
         always {
-            junit 'build/reports/cucumber/cucumber-report.xml'
-
-            publishHTML(target: [
-                allowMissing         : false,
-                alwaysLinkToLastBuild: true,
-                keepAll              : true,
-                reportDir            : 'build/reports/cucumber',
-                reportFiles          : 'cucumber-report.html',
-                reportName           : 'Cucumber HTML Report'
+            publishTestResults([
+                testResultsFilePattern: '**/test-results.trx',
+                testRunTitle: 'Test Results'
             ])
 
-            archiveArtifacts artifacts: 'build/reports/**/*', fingerprint: true
+            archiveArtifacts artifacts: '**/TestResults/**/*', fingerprint: true
         }
     }
 }

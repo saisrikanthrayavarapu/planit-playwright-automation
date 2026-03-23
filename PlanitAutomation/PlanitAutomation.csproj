@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <RootNamespace>PlanitAutomation</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Reqnroll BDD framework (SpecFlow successor) -->
+    <PackageReference Include="Reqnroll"                       Version="2.2.0" />
+    <PackageReference Include="Reqnroll.NUnit"                 Version="2.2.0" />
+
+    <!-- NUnit test framework -->
+    <PackageReference Include="NUnit"                          Version="4.2.2" />
+    <PackageReference Include="NUnit3TestAdapter"              Version="4.6.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk"         Version="17.11.1" />
+
+    <!-- Playwright for browser automation -->
+    <PackageReference Include="Microsoft.Playwright"           Version="1.50.0" />
+    <PackageReference Include="Microsoft.Playwright.NUnit"     Version="1.50.0" />
+
+    <!-- FluentAssertions for readable assertions -->
+    <PackageReference Include="FluentAssertions"               Version="7.0.0" />
+  </ItemGroup>
+
+  <!-- Copy feature files to output so Reqnroll can find them -->
+  <ItemGroup>
+    <None Update="Features\**\*.feature">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="reqnroll.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

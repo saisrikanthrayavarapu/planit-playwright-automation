@@ -1,9 +1,27 @@
-/build/
-/.gradle/
-/.idea/
-/.settings/
-/.vscode/
-/gradle/
-/bin/
-/gradle/*
-/.gradle/*
+# .NET build outputs
+bin/
+obj/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# Visual Studio / VS Code
+.vscode/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Test results
+TestResults/
+
+# Rider / JetBrains IDE
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
