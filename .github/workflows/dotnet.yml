@@ -22,6 +22,11 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
+    - name: Clean existing artifacts
+      run: |
+        echo "Cleaning previous run artifacts..."
+        rm -rf TestResults playwright-report
+        mkdir -p TestResults playwright-report
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
@@ -32,16 +37,11 @@ jobs:
       env:
         GHAC: true
       run: dotnet test --no-build --verbosity normal --logger "trx;LogFileName=test-results.trx" --results-directory TestResults
-    - name: Generate Playwright/TestResults Report Bundle
+    - name: Generate Test Report HTML
       run: |
-        echo "Creating report bundle from TestResults..."
-        mkdir -p playwright-report
-        if [ -d "TestResults" ] && [ "$(ls -A TestResults)" ]; then
-          cp -R TestResults/* playwright-report/
-          echo "Copied TestResults to playwright-report."
-        else
-          echo "No TestResults files found; creating placeholder." > playwright-report/README.txt
-        fi
+        echo "Generating HTML report from TRX results..."
+        dotnet tool install --global dotnet-reportgenerator-globaltool --version 5.1.21
+        reportgenerator -reports:TestResults/*.trx -targetdir:playwright-report -reporttypes:HtmlInline_AzurePipelines
         ls -al playwright-report
     - name: Archive Reports
       uses: actions/upload-artifact@v4
