@@ -26,4 +26,6 @@ jobs:
     - name: Install Playwright Browsers
       run: dotnet tool install --global Microsoft.Playwright.CLI && playwright install
     - name: Test
+      env:
+        GHAC: true
       run: dotnet test --no-build --verbosity normal
