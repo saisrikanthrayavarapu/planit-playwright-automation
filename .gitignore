@@ -2,6 +2,9 @@
 bin/
 obj/
 
+# Gradle (legacy from Java project)
+.gradle/
+
 # NuGet packages
 *.nupkg
 *.snupkg
