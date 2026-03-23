@@ -31,21 +31,24 @@ jobs:
     - name: Test
       env:
         GHAC: true
-      run: dotnet test --no-build --verbosity normal
-    - name: Generate Playwright Test Report
+      run: dotnet test --no-build --verbosity normal --logger "trx;LogFileName=test-results.trx" --results-directory TestResults
+    - name: Generate Playwright/TestResults Report Bundle
       run: |
-        echo "Creating Playwright report bundle..."
+        echo "Creating report bundle from TestResults..."
         mkdir -p playwright-report
-        if [ -d "TestResults" ]; then
+        if [ -d "TestResults" ] && [ "$(ls -A TestResults)" ]; then
           cp -R TestResults/* playwright-report/
+          echo "Copied TestResults to playwright-report."
+        else
+          echo "No TestResults files found; creating placeholder." > playwright-report/README.txt
         fi
-        if command -v playwright > /dev/null; then
-          if [ -d "playwright-report" ]; then
-            echo "Playwright report data prepared at playwright-report/"
-          fi
-        fi
+        ls -al playwright-report
     - name: Archive Reports
       uses: actions/upload-artifact@v4
       with:
         name: playwright-report
         path: playwright-report
+        if-no-files-found: warn
+        compression-level: 6
+        overwrite: false
+        include-hidden-files: false
