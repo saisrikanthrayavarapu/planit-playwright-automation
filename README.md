@@ -126,6 +126,23 @@ The `Jenkinsfile` defines a pipeline that:
 2. Runs `dotnet test` with TRX logging
 3. Publishes test results and archives artifacts
 
+---
+
+## GitHub Repository Setup
+
+To upload this project to a new GitHub repository:
+
+1. Create a new repository on GitHub (e.g., `planit-csharp-automation`)
+2. Copy the repository URL
+3. Run the following commands in your terminal:
+
+```bash
+git remote set-url origin <your-new-repo-url>
+git push -u origin master
+```
+
+This will push the current committed changes to your new GitHub repository.
+
 | Detail | Information |
 |--------|-------------|
 | Email | saisrikanth.rayavarapu@gmail.com |
